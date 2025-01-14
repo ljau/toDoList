@@ -4,71 +4,76 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import styled from 'styled-components/native';
 
+const Layout = styled.View`
+  width: 100%;
+  height: 100%;
+  background-color: lightGray;
+  align-items: center;
+  display: flex;
+`;
+const Header = styled.View`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  background-color: #a167a5;
+  align-items: center;
+  justify-content: center;
+`;
+const Text = styled.Text`
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+`;
+
+const ButtonContainer = styled.TouchableOpacity`
+  margin-vertical: .5rem;
+  width: 3rem;
+  height: 2rem;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: ${props => props.bgColor};
+
+`;
+const ButtonText = styled.Text`
+  font-size: 16px;
+  text-align: center;
+`;
+
+const FlexContainer = styled.View`
+  width: 100%;
+  height: ${props => (props.height ? props.height : `100%`)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`;
+const ButtonAddNew = ({ onPress, bgColor, title }) => (
+  <ButtonContainer onPress={onPress} bgColor={bgColor}>
+    <ButtonText>{title}</ButtonText>
+  </ButtonContainer>
+);
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try this template</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <Layout>
+      <Header>
+        <FlexContainer height={'50%'}>
+          <Text>Today</Text>
+        </FlexContainer>
+        <FlexContainer height={'50%'}>
+
+          <ButtonAddNew
+            onPress={() => true}
+            title='Add New'
+            bgColor='white'
+          />
+        </FlexContainer>
+      </Header>
+    </Layout>
+
+
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+
