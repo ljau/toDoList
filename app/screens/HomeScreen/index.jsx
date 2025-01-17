@@ -16,7 +16,7 @@ const HomeScreen = () => {
     const toggleCheckbox = () => setIsChecked((prev) => !prev);
 
     return (
-        <Layout Children={
+        <Layout children={
             <>
                 <Header>
                     <FlexContainer height={'50%'}>

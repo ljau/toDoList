@@ -1,10 +1,10 @@
 import React from 'react'
 import { MainView } from './styled'
 
-const Layout = ({ Children }) => {
+const Layout = ({ children }) => {
   return (
     <MainView>
-        {Children}
+        {children}
     </MainView>
   )
 }
