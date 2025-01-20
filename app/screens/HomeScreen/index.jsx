@@ -1,9 +1,9 @@
 import React, { useState }  from 'react'
 import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body, TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, Label, Container, CheckIcon } from './styled';
 import Layout from '../Layout';
-import { TouchableOpacity } from 'react-native';
 import { taskElementList } from '../../library/constants';
 import ButtonNewTask from '../../components/ButtonNewTask';
+import { colors } from '../../library/colors';
 
 const ButtonAddNew = ({ onPress, bgColor, title }) => (
     <ButtonContainer onPress={onPress} bgColor={bgColor}>
@@ -31,7 +31,7 @@ const HomeScreen = () => {
                             <ButtonAddNew
                                 onPress={() => true}
                                 title='New Task'
-                                bgColor='white'
+                                bgColor={colors.white}
                             />
                         </FlexContainer>
                     </FlexContainer>
