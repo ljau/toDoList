@@ -4,6 +4,7 @@ import { MainHeader, MainBody, TaskTitle, DescriptionTitle, NameInput, Descripti
 import { FlexContainer } from '../HomeScreen/styled';
 import ButtonUpdateTask from '../../components/ButtonUpdateTask';
 import { colors } from '../../library/colors';
+import Header from '../../components/Header';
 
 const NewTaskScreen = () => {
   const [description, setDescription] = useState("");
@@ -11,18 +12,7 @@ const NewTaskScreen = () => {
   return (
     <Layout children={
         <>
-        <MainHeader>
-          <FlexContainer justify={'center'}>
-            <FlexContainer height={'50%'}>
-              
-            <TaskTitle>Tasks</TaskTitle>
-            </FlexContainer>
-            <FlexContainer height={'50%'} width={'80%'} align={'flex-start'}>
-
-            <TaskTitle>New Task</TaskTitle>
-            </FlexContainer>
-          </FlexContainer>
-        </MainHeader>
+        <Header />
         <MainBody>
           <FlexContainer height={'80%'} width={'80%'} align={'flex-start'} justify={'flex-start'}>
             <DescriptionTitle>Task Name</DescriptionTitle>
