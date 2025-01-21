@@ -9,6 +9,7 @@ export const HeaderContainer = styled.View`
   background-color: ${colors.lightPurple};
   align-items: center;
   justify-content: center;
+  padding-top: 10px;
 `;
 
 export const HeaderTitle = styled(Title)`

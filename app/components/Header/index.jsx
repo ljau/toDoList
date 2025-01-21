@@ -10,10 +10,12 @@ const Header = () => {
         <FlexContainer justify={'center'}>
             <FlexContainer width={'90%'} height={'30%'} row justify={'space-between'}>
                 <HeaderButton>
-                    <FontAwesome5 name="angle-left" size={35} color="black" />
+                    <FontAwesome5 name="angle-left" size={40} color="black" />
                 </HeaderButton>
-                <HeaderTitle>Test Header</HeaderTitle>
-                <Ionicons name="menu" size={35} color="black" />
+                <HeaderTitle>Tasks</HeaderTitle>
+                <HeaderButton>
+                    <Ionicons name="menu" size={35} color="black" />
+                </HeaderButton>
             </FlexContainer>
             <FlexContainer height={'70%'} width={'80%'} align={'flex-start'}>
                 <HeaderTitle>New Task</HeaderTitle>

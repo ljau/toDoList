@@ -10,7 +10,7 @@ const NewTaskScreen = () => {
   const [description, setDescription] = useState("");
     
   return (
-    <Layout children={
+    <Layout>
         <>
         <Header />
         <MainBody>
@@ -31,7 +31,7 @@ const NewTaskScreen = () => {
           </FlexContainer>
         </MainBody>
         </>
-    }/>
+    </Layout>
   )
 }
 
