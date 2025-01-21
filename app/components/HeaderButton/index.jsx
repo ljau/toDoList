@@ -1,9 +1,9 @@
 import React from 'react'
 import { HeaderButtonContainer } from './styled'
 
-const HeaderButton = ({ children }) => {
+const HeaderButton = ({ children, onPress }) => {
   return (
-    <HeaderButtonContainer>
+    <HeaderButtonContainer onPress={onPress}>
         {children}
     </HeaderButtonContainer>
   )

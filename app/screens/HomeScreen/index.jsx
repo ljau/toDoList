@@ -1,19 +1,25 @@
 import React, { useState }  from 'react'
 import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body, TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, Label, Container, CheckIcon } from './styled';
-import Layout from '../Layout';
 import { taskElementList } from '../../library/constants';
-import ButtonNewTask from '../../components/ButtonNewTask';
 import { colors } from '../../library/colors';
+import ButtonTaskElement from '../../components/ButtonTaskElement';
+import Layout from '../Layout';
+import { Link, useRouter } from 'expo-router';
 
-const ButtonAddNew = ({ onPress, bgColor, title }) => (
+const ButtonAddNewTask = ({ onPress, bgColor, title }) => (
     <ButtonContainer onPress={onPress} bgColor={bgColor}>
         <ButtonText>{title}</ButtonText>
     </ButtonContainer>
 );
 
+const HandlePress = ({}) => (
+    <Link href='/screens/NewTaskScreen' />
+)
+
 const HomeScreen = () => {
     const [isChecked, setIsChecked] = useState(false);
     const toggleCheckbox = () => setIsChecked((prev) => !prev);
+    const router = useRouter();
 
     return (
         <Layout>
@@ -28,8 +34,8 @@ const HomeScreen = () => {
                             <LightText>5 tasks</LightText>
                         </FlexContainer>
                         <FlexContainer width={'50%'}>
-                            <ButtonAddNew
-                                onPress={() => true}
+                            <ButtonAddNewTask
+                                onPress={() => router.push('/screens/NewTaskScreen')}
                                 title='New Task'
                                 bgColor={colors.white}
                             />
@@ -38,8 +44,8 @@ const HomeScreen = () => {
                 </Header>
                 <Body>
                     {taskElementList.map(({title, date}, index) => (
-                        <ButtonNewTask 
-                            onPress={() => true}
+                        <ButtonTaskElement 
+                            onPress={() => HandlePress}
                             key={index}
                             title={title}
                             date={date}

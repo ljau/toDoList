@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { FlexContainer } from '../../screens/HomeScreen/styled';
 import { TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, CheckIcon } from './styled';
 
-const ButtonNewTask = ({onPress, title, date, isChecked, toggleCheckbox}) => (
+const ButtonTaskElement = ({onPress, title, date, isChecked, toggleCheckbox}) => (
         <TaskElement onPress={onPress} >
         <FlexContainer width={'20%'}>
         <CheckboxWrapper>
@@ -21,4 +21,4 @@ const ButtonNewTask = ({onPress, title, date, isChecked, toggleCheckbox}) => (
     </TaskElement>
 )
 
-export default ButtonNewTask
+export default ButtonTaskElement
