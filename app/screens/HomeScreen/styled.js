@@ -6,7 +6,7 @@ export const FlexContainer = styled.View`
   height: ${(props) => props.height || "100%"};
   display: flex;
   align-items: ${(props) => props.align || "center"};
-  justify-content: center;
+  justify-content: ${(props) => props.justify || "center"};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
 `;
 
