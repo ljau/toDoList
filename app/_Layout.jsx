@@ -3,9 +3,9 @@ import React from 'react'
 
 const RootLayout = () => {
   return (
-    <Stack>
+    <Stack screenOptions={{headerShown: false}}>       
         <Stack.Screen name="index" options={{ title: 'Home' }} />
-        <Stack.Screen name="screens/NewTaskScreen" options={{ title: 'New Task', animation: 'slide_from_right', headerShown: true, }} />
+        <Stack.Screen name="screens/NewTaskScreen/index" options={{ title: 'New Task'}} />
     </Stack>
   )
 }
