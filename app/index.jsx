@@ -5,7 +5,7 @@ import Layout from './screens/Layout'
 
 const App = () => {
   return (
-    <NewTaskScreen />
+    <HomeScreen />
   )
 }
 
