@@ -5,14 +5,20 @@ import { FlexContainer } from '../HomeScreen/styled';
 import ButtonUpdateTask from '../../components/ButtonUpdateTask';
 import { colors } from '../../library/colors';
 import Header from '../../components/Header';
+import MenuModal from '../../components/MenuModal';
 
 const NewTaskScreen = () => {
   const [description, setDescription] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
     
   return (
     <Layout>
         <>
-        <Header />
+        <Header onMenuPress={() => setModalVisible(true)}/>
+        <MenuModal 
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+        />
         <MainBody>
           <FlexContainer height={'80%'} width={'80%'} align={'flex-start'} justify={'flex-start'}>
             <DescriptionTitle>Task Name</DescriptionTitle>
