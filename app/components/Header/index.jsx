@@ -5,7 +5,7 @@ import { FontAwesome5, Ionicons } from '@expo/vector-icons'
 import HeaderButton from '../HeaderButton'
 import { useRouter } from 'expo-router'
 
-const Header = () => {
+const Header = ({onMenuPress}) => {
     const router = useRouter();
   return (
     <HeaderContainer>
@@ -15,7 +15,7 @@ const Header = () => {
                     <FontAwesome5 name="angle-left" size={40} color="black" />
                 </HeaderButton>
                 <HeaderTitle>Tasks</HeaderTitle>
-                <HeaderButton>
+                <HeaderButton onPress={onMenuPress}>
                     <Ionicons name="menu" size={35} color="black" />
                 </HeaderButton>
             </FlexContainer>
