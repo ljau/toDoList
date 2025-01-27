@@ -3,7 +3,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { CalendarContainer, DateLabel, DateLabelItem, LabelText, ModalWrapper, ValueText } from "./styled";
 
 const CalendarPicker = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date()); // Fecha por defecto
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
 
