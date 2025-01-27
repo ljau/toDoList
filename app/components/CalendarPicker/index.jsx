@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { CalendarContainer, DateLabel, DateLabelItem, LabelText, ValueText } from "./styled";
+import { CalendarContainer, DateLabel, DateLabelItem, LabelText, ModalWrapper, ValueText } from "./styled";
 
 const CalendarPicker = () => {
     const [selectedDate, setSelectedDate] = useState(new Date()); // Fecha por defecto
@@ -34,19 +34,24 @@ const CalendarPicker = () => {
           </ValueText>
         </DateLabelItem>
       </DateLabel>
-
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="date"
-        onConfirm={handleDateConfirm}
-        onCancel={() => setDatePickerVisibility(false)}
-      />
-      <DateTimePickerModal
-        isVisible={isTimePickerVisible}
-        mode="time"
-        onConfirm={handleTimeConfirm}
-        onCancel={() => setTimePickerVisibility(false)}
-      />
+      <ModalWrapper>
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={handleDateConfirm}
+            onCancel={() => setDatePickerVisibility(false)}
+            display="spinner"
+          />
+        </ModalWrapper>
+      <ModalWrapper>
+          <DateTimePickerModal
+            isVisible={isTimePickerVisible}
+            mode="time"
+            onConfirm={handleTimeConfirm}
+            onCancel={() => setTimePickerVisibility(false)}
+            display="spinner"
+          />
+        </ModalWrapper>
     </CalendarContainer>
     
   );
