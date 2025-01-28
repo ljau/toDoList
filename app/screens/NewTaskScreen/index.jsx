@@ -6,6 +6,7 @@ import ButtonUpdateTask from '../../components/ButtonUpdateTask';
 import { colors } from '../../library/colors';
 import Header from '../../components/Header';
 import MenuModal from '../../components/MenuModal';
+import CalendarPicker from '../../components/CalendarPicker';
 
 const NewTaskScreen = () => {
   const [description, setDescription] = useState("");
@@ -31,7 +32,8 @@ const NewTaskScreen = () => {
               value={description}
               onChangeText={setDescription}
             />
-            <FlexContainer height={'40%'}>
+            <CalendarPicker />
+            <FlexContainer height={'20%'}>
               <ButtonUpdateTask bgColor={colors.green} title={'Create Task'}/>
             </FlexContainer>
           </FlexContainer>
