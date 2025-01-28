@@ -26,7 +26,7 @@ export const ModalContainer = styled.View`
   background-color: ${colors.white};
   border-radius: 12px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   height: 60%;
   opacity: 0.8;
@@ -40,6 +40,15 @@ export const ModalText = styled.Text`
 
 export const CloseButton = styled.TouchableOpacity`
   background-color: ${colors.gray};
+  padding: 12px 20px;
+  border-radius: 8px;
+  width: 100%;
+  align-items: center;
+  opacity: 0.8;
+`;
+
+export const ModalButton = styled.TouchableOpacity`
+  background-color: ${colors.lightPurple};
   padding: 12px 20px;
   border-radius: 8px;
   width: 100%;
