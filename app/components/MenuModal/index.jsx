@@ -19,6 +19,9 @@ const MenuModal = ({ visible, onClose }) => {
                     <TouchableWithoutFeedback onPress={() => {}}>
                         <ModalContainer>
                           <FlexContainer height={'60%'} justify={'space-evenly'}>
+                          <ModalButton onPress={() => router.push('/')}>
+                              <ButtonText>Home</ButtonText>
+                            </ModalButton>
                             <ModalButton>
                               <ButtonText>Categories</ButtonText>
                             </ModalButton>
