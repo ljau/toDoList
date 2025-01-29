@@ -24,6 +24,7 @@ export const TaskElement = styled.TouchableOpacity`
   padding-left: 10px;
   border-radius: 10px;
   flex-direction: row;
+  margin: 10px;
 `;
 
 export const Label = styled.Text`

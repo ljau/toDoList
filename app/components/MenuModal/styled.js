@@ -28,7 +28,7 @@ export const ModalContainer = styled.View`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 60%;
+  height: 70%;
   opacity: 0.8;
 `;
 
