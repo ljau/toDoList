@@ -1,9 +1,11 @@
 import React from 'react'
-import { Modal, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { ButtonText, CloseButton, Container, ModalContainer, ModalOverlay, ModalText } from './styled';
+import { Modal, TouchableWithoutFeedback } from 'react-native';
+import { ButtonText, CloseButton, Container, ModalButton, ModalContainer, ModalOverlay, ModalText } from './styled';
+import { FlexContainer } from '../../screens/HomeScreen/styled';
+import { useRouter } from 'expo-router';
 
 const MenuModal = ({ visible, onClose }) => {
-  
+  const router = useRouter();
     return (
       <Container>
         <Modal
@@ -16,11 +18,22 @@ const MenuModal = ({ visible, onClose }) => {
                 <ModalOverlay>
                     <TouchableWithoutFeedback onPress={() => {}}>
                         <ModalContainer>
-                            <ModalText>Calendar</ModalText>
-                            <ModalText>Categories</ModalText>
+                          <FlexContainer height={'60%'} justify={'space-evenly'}>
+                          <ModalButton onPress={() => router.push('/')}>
+                              <ButtonText>Home</ButtonText>
+                            </ModalButton>
+                            <ModalButton>
+                              <ButtonText>Categories</ButtonText>
+                            </ModalButton>
+                            <ModalButton onPress={() => router.push('/screens/CreateCategoryScreen')}>
+                              <ButtonText>Create Category</ButtonText>
+                            </ModalButton>
+                          </FlexContainer>
+                          <FlexContainer height={'30%'} justify={'flex-end'}>
                             <CloseButton onPress={onClose}>
                                 <ButtonText>Cerrar</ButtonText>
                             </CloseButton>
+                          </FlexContainer>
                         </ModalContainer>
                     </TouchableWithoutFeedback>
                 </ModalOverlay>

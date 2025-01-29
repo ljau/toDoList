@@ -47,7 +47,7 @@ export const LightText = styled.Text`
 `;
 
 export const ButtonContainer = styled.TouchableOpacity`
-  width: 50%;
+  min-width: 50%;
   height: 50%;
   padding: 12px;
   border-radius: 10px;

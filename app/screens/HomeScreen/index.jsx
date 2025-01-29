@@ -5,6 +5,9 @@ import { colors } from '../../library/colors';
 import ButtonTaskElement from '../../components/ButtonTaskElement';
 import Layout from '../Layout';
 import { Link, useRouter } from 'expo-router';
+import HeaderButton from '../../components/HeaderButton';
+import { Ionicons } from '@expo/vector-icons';
+import MenuModal from '../../components/MenuModal';
 
 const ButtonAddNewTask = ({ onPress, bgColor, title }) => (
     <ButtonContainer onPress={onPress} bgColor={bgColor}>
@@ -20,15 +23,24 @@ const HomeScreen = () => {
     const [isChecked, setIsChecked] = useState(false);
     const toggleCheckbox = () => setIsChecked((prev) => !prev);
     const router = useRouter();
-
+    const [modalVisible, setModalVisible] = useState(false);
+    
     return (
         <Layout>
             <>
+                <MenuModal 
+                  visible={modalVisible}
+                  onClose={() => setModalVisible(false)}
+                />
                 <Header>
-                    <FlexContainer height={'50%'}>
+                    <FlexContainer height={'50%'} width={'90%'} row justify={'space-between'}>
+                        <FlexContainer width={'10%'}/>
                         <Title>Welcome!</Title>
+                        <HeaderButton onPress={() => setModalVisible(true)}>
+                            <Ionicons name="menu" size={35} color="black" />
+                        </HeaderButton>
                     </FlexContainer>
-                    <FlexContainer height={'50%'} row>
+                    <FlexContainer height={'50%'} width={'90%'} row justify={'space-evenly'}>
                         <FlexContainer width={'50%'}>
                             <Text>Today</Text>
                             <LightText>5 tasks</LightText>
