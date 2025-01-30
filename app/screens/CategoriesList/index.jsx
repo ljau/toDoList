@@ -11,7 +11,7 @@ import { useRouter } from 'expo-router'
 
 const CategoriesList = () => {
     const handleCategoryPress = (categoryName) => {
-        console.log(`Selected Category: ${categoryName}`);
+        return true;
       };
     const router = useRouter();
 
