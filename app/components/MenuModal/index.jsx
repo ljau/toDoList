@@ -18,7 +18,7 @@ const MenuModal = ({ visible, onClose }) => {
                 <ModalOverlay>
                     <TouchableWithoutFeedback onPress={() => {}}>
                         <ModalContainer>
-                          <FlexContainer height={'60%'} justify={'space-evenly'}>
+                          <FlexContainer height={'70%'} justify={'space-evenly'}>
                           <ModalButton onPress={() => router.push('/')}>
                               <ButtonText>Home</ButtonText>
                             </ModalButton>
@@ -28,8 +28,11 @@ const MenuModal = ({ visible, onClose }) => {
                             <ModalButton onPress={() => router.push('/screens/CreateCategoryScreen')}>
                               <ButtonText>Create Category</ButtonText>
                             </ModalButton>
+                            <ModalButton onPress={() => router.push('/screens/TasksList')}>
+                              <ButtonText>Tasks List</ButtonText>
+                            </ModalButton>
                           </FlexContainer>
-                          <FlexContainer height={'30%'} justify={'flex-end'}>
+                          <FlexContainer height={'25%'} justify={'flex-end'}>
                             <CloseButton onPress={onClose}>
                                 <ButtonText>Cerrar</ButtonText>
                             </CloseButton>
