@@ -1,4 +1,4 @@
-export const taskElementList = [
+export const TaskElementList = [
   {
     id: 1,
     title: "Buy groceries",
@@ -30,5 +30,28 @@ export const taskElementList = [
     date: "2025-02-02",
     time: "18:00",
     isChecked: true,
+  },
+];
+
+export const CategoryList = [
+  {
+    id: 1,
+    name: "Work",
+    description: "Tasks related to your job and professional projects.",
+  },
+  {
+    id: 2,
+    name: "Personal",
+    description: "Personal tasks, self-care, and daily activities.",
+  },
+  {
+    id: 3,
+    name: "Shopping",
+    description: "Items to buy, grocery lists, and online purchases.",
+  },
+  {
+    id: 4,
+    name: "Fitness",
+    description: "Workouts, sports, and health-related activities.",
   },
 ];

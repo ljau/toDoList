@@ -1,6 +1,6 @@
 import React, { useState }  from 'react'
 import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body, TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, Label, Container, CheckIcon } from './styled';
-import { taskElementList } from '../../library/constants';
+import { TaskElementList } from '../../library/constants';
 import { colors } from '../../library/colors';
 import ButtonTaskElement from '../../components/ButtonTaskElement';
 import Layout from '../Layout';
@@ -55,7 +55,7 @@ const HomeScreen = () => {
                     </FlexContainer>
                 </Header>
                 <Body>
-                    {taskElementList.map(({title, date}, index) => (
+                    {TaskElementList.map(({title, date}, index) => (
                         <ButtonTaskElement 
                             onPress={() => HandlePress}
                             key={index}
