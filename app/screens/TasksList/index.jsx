@@ -3,7 +3,7 @@ import Layout from '../Layout'
 import Header from '../../components/Header'
 import { MainBody } from '../NewTaskScreen/styled'
 import ButtonTaskElement from '../../components/ButtonTaskElement'
-import { taskElementList } from '../../library/constants'
+import { TaskElementList } from '../../library/constants'
 import { FlexContainer } from '../HomeScreen/styled'
 import { AddTaskButton } from './styled'
 import { FontAwesome5 } from '@expo/vector-icons'
@@ -11,7 +11,7 @@ import { colors } from '../../library/colors'
 import { useRouter } from 'expo-router'
 
 const TasksList = () => {
-    const [taskData, setTaskData] = useState(taskElementList);
+    const [taskData, setTaskData] = useState(TaskElementList);
     const router = useRouter();
   
     const toggleCheckbox = (index) => {

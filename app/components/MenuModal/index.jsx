@@ -22,7 +22,7 @@ const MenuModal = ({ visible, onClose }) => {
                           <ModalButton onPress={() => router.push('/')}>
                               <ButtonText>Home</ButtonText>
                             </ModalButton>
-                            <ModalButton>
+                            <ModalButton onPress={() => router.push('/screens/CategoriesList')}>
                               <ButtonText>Categories</ButtonText>
                             </ModalButton>
                             <ModalButton onPress={() => router.push('/screens/CreateCategoryScreen')}>
