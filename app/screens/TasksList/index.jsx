@@ -21,6 +21,10 @@ const TasksList = () => {
         )
       );
     };
+
+    const handlePressTask = () => {
+      router.push('/screens/EditTaskScreen')
+    }
   
     return (
       <Layout>
@@ -32,7 +36,7 @@ const TasksList = () => {
                 {taskData.map(({ title, date, isChecked }, index) => (
                     <ButtonTaskElement
                     key={index}
-                    onPress={() => true}
+                    onPress={() => handlePressTask()}
                     title={title}
                     date={date}
                     isChecked={isChecked}
