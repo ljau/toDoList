@@ -1,9 +1,9 @@
 import React from 'react'
 import { ButtonUpdateContainer, ButtonUpdateText } from './styled'
 
-const ButtonUpdateTask = ({bgColor, title}) => {
+const ButtonUpdateTask = ({bgColor, title, onPress}) => {
     return(
-        <ButtonUpdateContainer bgColor={bgColor}>
+        <ButtonUpdateContainer bgColor={bgColor} onPress={onPress}>
             <ButtonUpdateText>
                 {title}
             </ButtonUpdateText>
