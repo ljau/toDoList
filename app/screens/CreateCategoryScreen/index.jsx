@@ -7,21 +7,36 @@ import ButtonUpdateTask from '../../components/ButtonUpdateTask'
 import { colors } from '../../library/colors'
 import { getCategories, saveCategory } from '../../library/storage'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router'
+
 
 const CreateCategoryScreen = () => {
   const [categoryName, setCategoryName] = useState("");
   const [description, setDescription] = useState("");
+  const router = useRouter();
 
   const handleSaveCategory = async () => {
     if (categoryName.trim()) {
       try {
-        const newCategory = { id: Date.now(), name: categoryName, description: description };
+        // Retrieve the last used ID from AsyncStorage
+        const lastId = await AsyncStorage.getItem('lastCategoryId');
+        const newId = lastId ? parseInt(lastId) + 1 : 1;
+  
+        // Create new category with consecutive ID
+        const newCategory = { id: newId, name: categoryName, description: description };
+  
+        // Save category to storage
         await saveCategory(newCategory);
         console.log('Category saved:', newCategory);
-
-        // Optionally, you can fetch categories again to update the UI
+  
+        // Update and persist the last used ID
+        await AsyncStorage.setItem('lastCategoryId', newId.toString());
+  
+        // Fetch updated categories list
         const categories = await getCategories();
         console.log('Categories:', categories);
+        router.push('/');
+
       } catch (error) {
         console.error('Error saving category:', error);
       }
