@@ -5,7 +5,7 @@ import { MainBody } from '../NewTaskScreen/styled'
 import ButtonTaskElement from '../../components/ButtonTaskElement'
 import { TaskElementList } from '../../library/constants'
 import { FlexContainer } from '../HomeScreen/styled'
-import { AddTaskButton } from './styled'
+import { AddTaskButton, CustomScrollView, ScrollContainer } from './styled'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { colors } from '../../library/colors'
 import { useRouter } from 'expo-router'
@@ -34,18 +34,22 @@ const TasksList = () => {
         <Header screenTitle={name ? name : 'Tasks'} headerTitle={description ? description: 'All tasks'} />
         <MainBody>
             <FlexContainer height={'80%'} justify={'space-between'}>
-                <FlexContainer height={'100%'} justify={'flex-start'}>
+                <FlexContainer height={'80%'} justify={'flex-start'}>
+                  <ScrollContainer>
 
-                {taskData.map(({ title, date, isChecked }, index) => (
-                    <ButtonTaskElement
-                    key={index}
-                    onPress={() => handlePressTask()}
-                    title={title}
-                    date={date}
-                    isChecked={isChecked}
-                    toggleCheckbox={() => toggleCheckbox(index)}
-                    />
-                ))}
+                  <CustomScrollView contentContainerStyle={{ alignItems: "center", flexGrow: 1, justifyContent: "flex-start", }}>
+                    {taskData.map(({ title, date, isChecked }, index) => (
+                      <ButtonTaskElement
+                      key={index}
+                      onPress={() => handlePressTask()}
+                      title={title}
+                      date={date}
+                      isChecked={isChecked}
+                      toggleCheckbox={() => toggleCheckbox(index)}
+                      />
+                    ))}
+                  </CustomScrollView>
+                    </ScrollContainer>
                 </FlexContainer>
                 <AddTaskButton onPress={() => router.push('/screens/NewTaskScreen')}>
                     <FontAwesome5 name="plus" size={30} color={colors.white} />

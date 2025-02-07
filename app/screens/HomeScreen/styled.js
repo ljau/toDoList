@@ -4,10 +4,10 @@ import { colors } from "../../library/colors";
 export const FlexContainer = styled.View`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
-  display: flex;
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
+  overflow: hidden;
 `;
 
 export const Header = styled.View`
