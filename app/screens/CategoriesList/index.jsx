@@ -28,19 +28,20 @@ const CategoriesList = () => {
       fetchCategories();
     }, []);
 
-    const handleCategoryPress = (categoryName) => {
-        return true;
-      };
+    const handleCategoryPress = (catName, catId, catDescription) => {
+      // console.log( '\n Name: ', catName, '\n ID: ', catId, '\n Description: ', catDescription );
+      router.push({ pathname: '/screens/TasksList/', params: {id: catId, name: catName, description: catDescription} })
+    };
     const router = useRouter();
 
   return (
     <Layout>
-        <Header screenTitle={'Choose Category'} headerTitle={'Categories'}/>
+        <Header screenTitle={'Welcome'} headerTitle={'Categories'}/>
         <MainBody>
             <FlexContainer height={'85%'} justify={'space-between'}>
                 <FlexContainer height={'100%'} justify={'flex-start'}>
                     {categories.map((category) => (
-                        <CategoryButton key={category.id} onPress={() => handleCategoryPress(category.name)}>
+                        <CategoryButton key={category.id} onPress={() => handleCategoryPress(category.name, category.id, category.description)}>
                             <CategoryTitle>{category.name}</CategoryTitle>
                             <FontAwesome5 name="angle-right" size={35} color={colors.lightPurple} />
                         </CategoryButton>

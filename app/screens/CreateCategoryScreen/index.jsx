@@ -35,7 +35,7 @@ const CreateCategoryScreen = () => {
         // Fetch updated categories list
         const categories = await getCategories();
         console.log('Categories:', categories);
-        router.push('/');
+        router.push('/screens/CategoriesList');
 
       } catch (error) {
         console.error('Error saving category:', error);

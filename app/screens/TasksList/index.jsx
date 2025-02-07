@@ -9,11 +9,14 @@ import { AddTaskButton } from './styled'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { colors } from '../../library/colors'
 import { useRouter } from 'expo-router'
+import { useLocalSearchParams } from "expo-router";
 
 const TasksList = () => {
     const [taskData, setTaskData] = useState(TaskElementList);
     const router = useRouter();
-  
+    const { id, name, description } = useLocalSearchParams();
+    console.log( '\n Name: ', name, '\n ID: ', id, '\n Description: ', description );
+
     const toggleCheckbox = (index) => {
         setTaskData(prevTasks =>
         prevTasks.map((task, i) =>
@@ -28,7 +31,7 @@ const TasksList = () => {
   
     return (
       <Layout>
-        <Header screenTitle={"Tasks"} headerTitle={"Tasks list"} />
+        <Header screenTitle={name ? name : 'Tasks'} headerTitle={description ? description: 'All tasks'} />
         <MainBody>
             <FlexContainer height={'80%'} justify={'space-between'}>
                 <FlexContainer height={'100%'} justify={'flex-start'}>
