@@ -11,7 +11,7 @@ export const CalendarContainer = styled.View`
 `;
 
 export const DateLabel = styled.TouchableOpacity`
-  width: 90%;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

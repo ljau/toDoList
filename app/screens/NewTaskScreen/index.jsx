@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../Layout';
-import { MainBody, DescriptionTitle, NameInput, DescriptionInput } from './styled';
+import { MainBody, DescriptionTitle, NameInput, DescriptionInput, PickerContainer } from './styled';
 import { FlexContainer } from '../HomeScreen/styled';
 import ButtonUpdateTask from '../../components/ButtonUpdateTask';
 import { colors } from '../../library/colors';
@@ -8,12 +8,30 @@ import Header from '../../components/Header';
 import CalendarPicker from '../../components/CalendarPicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
-import { getTasks, saveTask } from '../../library/storage';
+import { getCategories, getTasks, saveTask } from '../../library/storage';
+import { Picker } from '@react-native-picker/picker';
+import { Text, View } from 'react-native';
 
 const NewTaskScreen = () => {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskname, setTaskname] = useState("");
-    const router = useRouter();
+  const router = useRouter();
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(0);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const categoriesFromStorage = await getCategories(); // Use your fetch function
+        setCategories(categoriesFromStorage); // Set categories to state
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    loadCategories();
+  }, []); // Empty array ensures the effect runs once after the initial render
+
 
     const handleSaveTask = async () => {
       if (taskname.trim()) {
@@ -29,7 +47,7 @@ const NewTaskScreen = () => {
             description: taskDescription,
             date: '',
             time: '',
-            categoryId: '', // Ensure the task is linked to a category
+            categoryId: selectedCategory, // Ensure the task is linked to a category
           };
     
           // Save task to storage
@@ -42,7 +60,7 @@ const NewTaskScreen = () => {
           // Fetch updated tasks list
           const tasks = await getTasks();
           console.log('Tasks:', tasks);
-          router.push('/')
+          router.push('/');
         } catch (error) {
           console.error('Error saving task:', error);
         }
@@ -50,9 +68,6 @@ const NewTaskScreen = () => {
         console.error('Task title cannot be empty');
       }
     };
-    
-    
-
     
   return (
     <Layout>
@@ -73,8 +88,28 @@ const NewTaskScreen = () => {
               value={taskDescription}
               onChangeText={setTaskDescription}
             />
+    <PickerContainer>
+      <Picker
+        selectedValue={selectedCategory}
+        onValueChange={(itemValue) => setSelectedCategory(itemValue)}
+        style={{ height: 50, width: '100%' }}
+        >
+        {console.log('Selected cat:', selectedCategory)}
+
+
+        <Picker.Item label="Select Category" value={null} enabled={false} />
+        {categories.map((category) => (
+          <Picker.Item
+            key={category.id} // Use a unique identifier for each category
+            label={category.name}
+            value={category.id}
+          />
+        ))}
+      </Picker>
+    </PickerContainer>
+
             <CalendarPicker />
-            <FlexContainer height={'20%'}>
+            <FlexContainer height={'10%'}>
               <ButtonUpdateTask bgColor={colors.green} title={'Create Task'} onPress={handleSaveTask}/>
             </FlexContainer>
           </FlexContainer>

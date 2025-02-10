@@ -5,11 +5,12 @@ import { MainBody } from '../NewTaskScreen/styled'
 import ButtonTaskElement from '../../components/ButtonTaskElement'
 import { TaskElementList } from '../../library/constants'
 import { FlexContainer } from '../HomeScreen/styled'
-import { AddTaskButton, CustomScrollView, ScrollContainer } from './styled'
+import { AddTaskButton, ListContainer } from './styled'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { colors } from '../../library/colors'
 import { useRouter } from 'expo-router'
 import { useLocalSearchParams } from "expo-router";
+import { FlatList } from 'react-native'
 
 const TasksList = () => {
     const [taskData, setTaskData] = useState(TaskElementList);
@@ -28,28 +29,30 @@ const TasksList = () => {
     const handlePressTask = () => {
       router.push('/screens/EditTaskScreen')
     }
-  
+
     return (
       <Layout>
         <Header screenTitle={name ? name : 'Tasks'} headerTitle={description ? description: 'All tasks'} />
         <MainBody>
-            <FlexContainer height={'80%'} justify={'space-between'}>
+            <FlexContainer height={'85%'} justify={'space-between'}>
                 <FlexContainer height={'80%'} justify={'flex-start'}>
-                  <ScrollContainer>
-
-                  <CustomScrollView contentContainerStyle={{ alignItems: "center", flexGrow: 1, justifyContent: "flex-start", }}>
-                    {taskData.map(({ title, date, isChecked }, index) => (
+                  <ListContainer>
+                  <FlatList
+                    data={taskData}
+                    keyExtractor={(item) => item.id}
+                    style={{ width: "100%" }}
+                    renderItem={({ item }) => (
                       <ButtonTaskElement
-                      key={index}
                       onPress={() => handlePressTask()}
-                      title={title}
-                      date={date}
-                      isChecked={isChecked}
-                      toggleCheckbox={() => toggleCheckbox(index)}
+                      title={item.title}
+                      date={item.date}
+                      isChecked={item.isChecked}
+                      toggleCheckbox={() => toggleCheckbox(item.id-1)}
                       />
-                    ))}
-                  </CustomScrollView>
-                    </ScrollContainer>
+                    )}
+                    showsVerticalScrollIndicator={false}
+                  />
+                  </ListContainer>
                 </FlexContainer>
                 <AddTaskButton onPress={() => router.push('/screens/NewTaskScreen')}>
                     <FontAwesome5 name="plus" size={30} color={colors.white} />

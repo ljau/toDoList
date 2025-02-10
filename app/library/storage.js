@@ -45,5 +45,31 @@ const getTasks = async () => {
   return await getData("tasks");
 };
 
+const defaultCategories = [
+  { id: "1", name: "Work" },
+  { id: "2", name: "Home" },
+  { id: "3", name: "Personal" },
+];
+
+const resetStorageAndSetDefaultCategories = async () => {
+  try {
+    // Clear everything from AsyncStorage
+    await AsyncStorage.clear();
+
+    // Re-set the default categories
+    await AsyncStorage.setItem("categories", JSON.stringify(defaultCategories));
+
+    console.log("Storage cleared, and default categories restored!");
+  } catch (error) {
+    console.error("Error resetting storage and restoring categories:", error);
+  }
+};
+
 // Export the functions for use in other parts of the app
-export { saveCategory, getCategories, saveTask, getTasks };
+export {
+  saveCategory,
+  getCategories,
+  saveTask,
+  getTasks,
+  resetStorageAndSetDefaultCategories,
+};

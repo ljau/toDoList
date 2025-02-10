@@ -13,12 +13,10 @@ export const AddTaskButton = styled.TouchableOpacity`
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 `;
 
-export const CustomScrollView = styled.ScrollView`
-  width: 100%;
-  flex-grow: 1;
-`;
+///////////////
 
-export const ScrollContainer = styled.View`
+export const ListContainer = styled.View`
   flex: 1;
+  padding: 20px;
   width: 100%;
 `;

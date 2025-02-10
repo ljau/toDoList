@@ -8,16 +8,7 @@ import { Link, useRouter } from 'expo-router';
 import HeaderButton from '../../components/HeaderButton';
 import { Ionicons } from '@expo/vector-icons';
 import MenuModal from '../../components/MenuModal';
-
-const ButtonAddNewTask = ({ onPress, bgColor, title }) => (
-    <ButtonContainer onPress={onPress} bgColor={bgColor}>
-        <ButtonText>{title}</ButtonText>
-    </ButtonContainer>
-);
-
-const HandlePress = ({}) => (
-    <Link href='/screens/NewTaskScreen' />
-)
+import { FlatList } from 'react-native';
 
 const HomeScreen = () => {
     const [isChecked, setIsChecked] = useState(false);
@@ -25,6 +16,15 @@ const HomeScreen = () => {
     const router = useRouter();
     const [modalVisible, setModalVisible] = useState(false);
     
+    const ButtonAddNewTask = ({ onPress, bgColor, title }) => (
+        <ButtonContainer onPress={onPress} bgColor={bgColor}>
+            <ButtonText>{title}</ButtonText>
+        </ButtonContainer>
+    );
+    
+    const HandlePress = () => (
+        router.push('/screens/EditTaskScreen')
+    )
     return (
         <Layout>
             <>
@@ -55,16 +55,21 @@ const HomeScreen = () => {
                     </FlexContainer>
                 </Header>
                 <Body>
-                    {TaskElementList.map(({title, date}, index) => (
-                        <ButtonTaskElement 
-                            onPress={() => HandlePress}
+                    <FlatList
+                        data={TaskElementList}
+                        keyExtractor={(item, index) => index.toString()}  // Unique key for each element
+                        renderItem={({ item, index }) => (
+                        <ButtonTaskElement
+                            onPress={() => HandlePress()}
                             key={index}
-                            title={title}
-                            date={date}
-                            isChecked={isChecked}
-                            toggleCheckbox={toggleCheckbox}
-                        />     
-                    ))}
+                            title={item.title}
+                            date={item.date}
+                            isChecked={item.isChecked}  // You can replace with actual state for checkbox
+                            toggleCheckbox={() => toggleCheckbox}
+                        />
+                        )}
+                        showsVerticalScrollIndicator={false}
+                    />
                 </Body>
             </>
         </Layout>

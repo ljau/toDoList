@@ -7,7 +7,6 @@ export const FlexContainer = styled.View`
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
-  overflow: hidden;
 `;
 
 export const Header = styled.View`
