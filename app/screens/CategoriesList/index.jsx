@@ -42,12 +42,6 @@ const CategoriesList = () => {
         <MainBody>
             <FlexContainer height={'85%'} justify={'space-between'}>
                 <FlexContainer height={'85%'} justify={'flex-start'}>
-                    {/* {categories.map((category) => (
-                        <CategoryButton key={category.id} onPress={() => handleCategoryPress(category.name, category.id, category.description)}>
-                            <CategoryTitle>{category.name}</CategoryTitle>
-                            <FontAwesome5 name="angle-right" size={35} color={colors.lightPurple} />
-                        </CategoryButton>
-                    ))} */}
                   <ListContainer>
                     <FlatList
                       data={categories}
@@ -59,7 +53,7 @@ const CategoriesList = () => {
                           <FontAwesome5 name="angle-right" size={35} color={colors.lightPurple} />
                         </CategoryButton>
                       )}
-                      showsVerticalScrollIndicator={false}  // Hide the scrollbar
+                      showsVerticalScrollIndicator={false}
                     />
                   </ListContainer>
                 </FlexContainer>

@@ -27,7 +27,7 @@ const EditTaskScreen = () => {
             <CalendarPicker />
             <FlexContainer height={'20%'} justify={'space-around'}>
               <ButtonUpdateTask bgColor={colors.green} title={'Create Task'}/>
-              <ButtonUpdateTask bgColor={colors.red} title={'Create Task'}/>
+              <ButtonUpdateTask bgColor={colors.red} title={'Delete Task'}/>
             </FlexContainer>
         </FlexContainer>
         </MainBody>

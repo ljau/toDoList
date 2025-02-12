@@ -28,10 +28,6 @@ const HomeScreen = () => {
     return (
         <Layout>
             <>
-                <MenuModal 
-                  visible={modalVisible}
-                  onClose={() => setModalVisible(false)}
-                />
                 <Header>
                     <FlexContainer height={'50%'} width={'90%'} row justify={'space-between'}>
                         <FlexContainer width={'10%'}/>
@@ -41,19 +37,30 @@ const HomeScreen = () => {
                         </HeaderButton>
                     </FlexContainer>
                     <FlexContainer height={'50%'} width={'90%'} row justify={'space-evenly'}>
-                        <FlexContainer width={'50%'}>
-                            <Text>Today</Text>
-                            <LightText>5 tasks</LightText>
+                        <FlexContainer width={'30%'}>
+                            <Text>All Tasks</Text>
+                            <LightText>{TaskElementList.length + ' Tasks'}</LightText>
                         </FlexContainer>
-                        <FlexContainer width={'50%'}>
+                        {/* <FlexContainer width={'30%'}>
                             <ButtonAddNewTask
                                 onPress={() => router.push('/screens/NewTaskScreen')}
                                 title='New Task'
                                 bgColor={colors.white}
                             />
                         </FlexContainer>
+                        <FlexContainer width={'40%'}>
+                            <ButtonAddNewTask
+                                onPress={() => router.push('/screens/CreateCategoryScreen')}
+                                title='New Category'
+                                bgColor={colors.white}
+                            />
+                        </FlexContainer> */}
                     </FlexContainer>
                 </Header>
+                <MenuModal 
+                  visible={modalVisible}
+                  onClose={() => setModalVisible(false)}
+                />
                 <Body>
                     <FlatList
                         data={TaskElementList}
