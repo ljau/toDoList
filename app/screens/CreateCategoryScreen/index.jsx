@@ -27,14 +27,12 @@ const CreateCategoryScreen = () => {
   
         // Save category to storage
         await saveCategory(newCategory);
-        console.log('Category saved:', newCategory);
   
         // Update and persist the last used ID
         await AsyncStorage.setItem('lastCategoryId', newId.toString());
   
         // Fetch updated categories list
         const categories = await getCategories();
-        console.log('Categories:', categories);
         router.push('/screens/CategoriesList');
 
       } catch (error) {
@@ -49,7 +47,6 @@ const CreateCategoryScreen = () => {
   const clearStorage = async () => {
     try {
       await AsyncStorage.clear();
-      console.log('Storage has been cleared!');
     } catch (error) {
       console.error('Error clearing AsyncStorage:', error);
     }
@@ -59,7 +56,6 @@ const CreateCategoryScreen = () => {
     const fetchCategories = async () => {
       try {
         const categories = await getCategories();
-        console.log('Categories:', categories);
       } catch (error) {
         console.error('Error fetching categories:', error);
       }

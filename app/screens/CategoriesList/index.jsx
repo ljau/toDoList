@@ -20,7 +20,6 @@ const CategoriesList = () => {
         try {
           const categoriesFromStorage = await getCategories();
           setCategories(categoriesFromStorage); // Save to state
-          console.log('categories:', categories);
           
         } catch (error) {
           console.error('Error fetching categories:', error);
@@ -31,7 +30,6 @@ const CategoriesList = () => {
     }, []);
 
     const handleCategoryPress = (catName, catId, catDescription) => {
-      // console.log( '\n Name: ', catName, '\n ID: ', catId, '\n Description: ', catDescription );
       router.push({ pathname: '/screens/TasksList/', params: {id: catId, name: catName, description: catDescription} })
     };
     const router = useRouter();

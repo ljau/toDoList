@@ -16,7 +16,6 @@ const TasksList = () => {
     const [taskData, setTaskData] = useState(TaskElementList);
     const router = useRouter();
     const { id, name, description } = useLocalSearchParams();
-    console.log( '\n Name: ', name, '\n ID: ', id, '\n Description: ', description );
 
     const toggleCheckbox = (index) => {
         setTaskData(prevTasks =>

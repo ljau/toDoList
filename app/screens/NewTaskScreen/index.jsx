@@ -52,14 +52,12 @@ const NewTaskScreen = () => {
     
           // Save task to storage
           await saveTask(newTask);
-          console.log('Task saved:', newTask);
     
           // Update and persist the last used task ID
           await AsyncStorage.setItem('lastTaskId', newTaskId.toString());
     
           // Fetch updated tasks list
           const tasks = await getTasks();
-          console.log('Tasks:', tasks);
           router.push('/');
         } catch (error) {
           console.error('Error saving task:', error);
@@ -94,9 +92,6 @@ const NewTaskScreen = () => {
         onValueChange={(itemValue) => setSelectedCategory(itemValue)}
         style={{ height: 50, width: '100%' }}
         >
-        {console.log('Selected cat:', selectedCategory)}
-
-
         <Picker.Item label="Select Category" value={null} enabled={false} />
         {categories.map((category) => (
           <Picker.Item
