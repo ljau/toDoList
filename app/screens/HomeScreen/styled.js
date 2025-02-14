@@ -4,7 +4,6 @@ import { colors } from "../../library/colors";
 export const FlexContainer = styled.View`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
-  display: flex;
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
@@ -12,7 +11,7 @@ export const FlexContainer = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: 30%;
+  height: 20%;
   display: flex;
   background-color: ${colors.lightPurple};
   align-items: center;
@@ -21,7 +20,7 @@ export const Header = styled.View`
 
 export const Body = styled.View`
   width: 100%;
-  height: 70%;
+  height: 80%;
   display: flex;
   background-color: ${colors.white};
   align-items: center;
@@ -54,7 +53,7 @@ export const ButtonContainer = styled.TouchableOpacity`
   background-color: ${(props) => props.bgColor};
 `;
 export const ButtonText = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
 `;
 

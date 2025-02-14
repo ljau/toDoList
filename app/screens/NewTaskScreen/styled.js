@@ -32,7 +32,7 @@ export const DescriptionInput = styled.TextInput`
   background-color: ${colors.mediumGray};
   border-radius: 10px;
   margin: 10px 0px 10px 0px;
-  height: 30%;
+  height: 25%;
   width: 100%;
   border-radius: 10px;
   padding: 10px;
@@ -59,4 +59,14 @@ export const TaskButton = styled.TouchableOpacity`
 export const TaskButtonText = styled.Text`
   font-size: 16px;
   text-align: center;
+`;
+
+export const PickerContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${colors.white};
+  border-radius: 8px;
+  elevation: 5;
 `;

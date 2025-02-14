@@ -11,8 +11,8 @@ export const CategoryButton = styled.TouchableOpacity`
   padding: 0px 50px;
   margin: 10px;
   border-radius: 10px;
-  width: 80%;
-  height: 15%;
+  width: 90%;
+  height: 80px;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;

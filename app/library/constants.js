@@ -31,6 +31,30 @@ export const TaskElementList = [
     time: "18:00",
     isChecked: true,
   },
+  {
+    id: 5,
+    title: "Call dad",
+    description: "Call dad to check in and catch up.",
+    date: "2025-02-02",
+    time: "19:00",
+    isChecked: true,
+  },
+  {
+    id: 6,
+    title: "Clean bathroom",
+    description: "Clean all the bathroom",
+    date: "2025-02-02",
+    time: "20:00",
+    isChecked: true,
+  },
+  {
+    id: 7,
+    title: "Check fridge",
+    description: "Check items in the fridge",
+    date: "2025-02-02",
+    time: "21:00",
+    isChecked: true,
+  },
 ];
 
 export const CategoryList = [

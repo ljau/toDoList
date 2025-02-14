@@ -15,8 +15,8 @@ export const TaskDateText = styled.Text`
 `;
 
 export const TaskElement = styled.TouchableOpacity`
-  width: 70%;
-  height: 15%;
+  width: 90%;
+  height: 80px;
   background-color: ${colors.lightGray};
   display: flex;
   justify-content: flex-start;
