@@ -51,10 +51,17 @@ const HomeScreen = () => {
                             <Ionicons name="menu" size={35} color="black" />
                         </HeaderButton>
                     </FlexContainer>
-                    <FlexContainer height={'50%'} width={'90%'} row justify={'space-evenly'}>
-                        <FlexContainer width={'50%'}>
+                    <FlexContainer height={'60%'} width={'90%'} row justify={'space-between'}>
+                        <FlexContainer width={'40%'}>
                             <Text>Today's Tasks</Text>
                             <LightText>{todayTasks.length + ' Tasks'}</LightText>
+                        </FlexContainer>
+                        <FlexContainer width={'40%'}>
+                            <ButtonAddNewTask
+                                onPress={() => router.push('/screens/NewTaskScreen')}
+                                title='New Task'
+                                bgColor={colors.white}
+                                />
                         </FlexContainer>
                     </FlexContainer>
                 </Header>
@@ -65,12 +72,13 @@ const HomeScreen = () => {
                 <Body>
                     <FlatList
                         data={todayTasks}
-                        keyExtractor={(item) => index.id.toString()}  // Unique key for each element
+                        keyExtractor={(item, index) => item.id.toString()} // Unique key for each element
                         renderItem={({ item }) => (
                         <ButtonTaskElement
                             onPress={() => HandlePress(item.id)}
                             title={item.title}
-                            date={item.date}
+                            date={new Date(item.date).toLocaleDateString()}
+                            time={item.time}
                             isChecked={item.isChecked}  // You can replace with actual state for checkbox
                             toggleCheckbox={() => toggleCheckbox(item.id)}
                         />

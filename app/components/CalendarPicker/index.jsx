@@ -2,27 +2,26 @@ import React, { useState } from "react";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { CalendarContainer, DateLabel, DateLabelItem, LabelText, ModalWrapper, ValueText } from "./styled";
 
-const CalendarPicker = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-    const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+const CalendarPicker = ({ selectedDate, setSelectedDate, selectedTime, setSelectedTime }) => {
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
 
-    const handleDateConfirm = (date) => {
-      setSelectedDate((prevDate) => new Date(date.setHours(prevDate.getHours(), prevDate.getMinutes())));
-      setDatePickerVisibility(false)
-    };
-  
-    const handleTimeConfirm = (time) => {
-      setSelectedDate((prevDate) => new Date(prevDate.setHours(time.getHours(), time.getMinutes())));
-      setTimePickerVisibility(false);
-    };
+  const handleDateConfirm = (date) => {
+    setSelectedDate(date);
+    setDatePickerVisibility(false);
+  };
+
+  const handleTimeConfirm = (time) => {
+    setSelectedTime(time);
+    setTimePickerVisibility(false);
+  };
 
   return (
-<CalendarContainer>
+    <CalendarContainer>
       <DateLabel onPress={() => setDatePickerVisibility(true)}>
         <DateLabelItem>
           <LabelText>Date:</LabelText>
-          <ValueText>{selectedDate.toLocaleDateString()}</ValueText>
+          <ValueText>{selectedDate ? selectedDate.toLocaleDateString() : "Select a date"}</ValueText>
         </DateLabelItem>
       </DateLabel>
 
@@ -30,30 +29,33 @@ const CalendarPicker = () => {
         <DateLabelItem>
           <LabelText>Time:</LabelText>
           <ValueText>
-            {selectedDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+            {selectedTime
+              ? selectedTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+              : "Select a time"}
           </ValueText>
         </DateLabelItem>
       </DateLabel>
+
       <ModalWrapper>
-          <DateTimePickerModal
-            isVisible={isDatePickerVisible}
-            mode="date"
-            onConfirm={handleDateConfirm}
-            onCancel={() => setDatePickerVisibility(false)}
-            display="spinner"
-          />
-        </ModalWrapper>
+        <DateTimePickerModal
+          isVisible={isDatePickerVisible}
+          mode="date"
+          onConfirm={handleDateConfirm}
+          onCancel={() => setDatePickerVisibility(false)}
+          display="spinner"
+        />
+      </ModalWrapper>
+
       <ModalWrapper>
-          <DateTimePickerModal
-            isVisible={isTimePickerVisible}
-            mode="time"
-            onConfirm={handleTimeConfirm}
-            onCancel={() => setTimePickerVisibility(false)}
-            display="spinner"
-          />
-        </ModalWrapper>
+        <DateTimePickerModal
+          isVisible={isTimePickerVisible}
+          mode="time"
+          onConfirm={handleTimeConfirm}
+          onCancel={() => setTimePickerVisibility(false)}
+          display="spinner"
+        />
+      </ModalWrapper>
     </CalendarContainer>
-    
   );
 };
 
