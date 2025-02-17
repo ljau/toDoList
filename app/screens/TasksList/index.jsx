@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../Layout'
 import Header from '../../components/Header'
 import { MainBody } from '../NewTaskScreen/styled'
@@ -11,8 +11,10 @@ import { colors } from '../../library/colors'
 import { useRouter } from 'expo-router'
 import { useLocalSearchParams } from "expo-router";
 import { FlatList } from 'react-native'
+import { getTasks, getTasksByCategory, getTodayTasks } from '../../library/storage'
 
 const TasksList = () => {
+    const { categoryId, filter } = useLocalSearchParams();
     const [taskData, setTaskData] = useState(TaskElementList);
     const router = useRouter();
     const { id, name, description } = useLocalSearchParams();
@@ -28,6 +30,24 @@ const TasksList = () => {
     const handlePressTask = () => {
       router.push('/screens/EditTaskScreen')
     }
+
+    useEffect(() => {
+      const fetchTasks = async () => {
+        let retrievedTasks = [];
+  
+        if (filter === "today") {
+          retrievedTasks = await getTodayTasks(); // Get today's tasks
+        } else if (id) {
+          retrievedTasks = await getTasksByCategory(Number(id)); // Get tasks by category
+        } else {
+          retrievedTasks = await getTasks(); // Get all tasks
+        }
+  
+        setTaskData(retrievedTasks);
+      };
+  
+      fetchTasks();
+    }, [categoryId, filter]);
 
     return (
       <Layout>

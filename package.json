@@ -15,6 +15,9 @@
     "preset": "jest-expo",
     "setupFiles": [
       "./jestSetup.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
     ]
   },
   "dependencies": {
