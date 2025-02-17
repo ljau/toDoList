@@ -64,7 +64,8 @@ const TasksList = () => {
                       <ButtonTaskElement
                       onPress={() => handlePressTask()}
                       title={item.title}
-                      date={item.date}
+                      date={new Date(item.date).toLocaleDateString()}
+                      time={item.time}
                       isChecked={item.isChecked}
                       toggleCheckbox={() => toggleCheckbox(item.id-1)}
                       />
