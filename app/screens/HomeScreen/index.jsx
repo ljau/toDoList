@@ -24,8 +24,8 @@ const HomeScreen = () => {
         </ButtonContainer>
     );
     
-    const HandlePress = () => (
-        router.push('/screens/EditTaskScreen')
+    const HandlePress = (taskId) => (
+        router.push(`/screens/EditTaskScreen?taskId=${taskId}`)
     )
 
     useEffect(() => {

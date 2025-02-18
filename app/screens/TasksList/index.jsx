@@ -15,7 +15,7 @@ import { getTasks, getTasksByCategory, getTodayTasks } from '../../library/stora
 
 const TasksList = () => {
     const { categoryId, filter } = useLocalSearchParams();
-    const [taskData, setTaskData] = useState(TaskElementList);
+    const [taskData, setTaskData] = useState();
     const router = useRouter();
     const { id, name, description } = useLocalSearchParams();
 
@@ -27,8 +27,8 @@ const TasksList = () => {
       );
     };
 
-    const handlePressTask = () => {
-      router.push('/screens/EditTaskScreen')
+    const handlePressTask = (taskId) => {
+      router.push(`/screens/EditTaskScreen?taskId=${taskId}`);
     }
 
     useEffect(() => {
@@ -62,7 +62,7 @@ const TasksList = () => {
                     style={{ width: "100%" }}
                     renderItem={({ item }) => (
                       <ButtonTaskElement
-                      onPress={() => handlePressTask()}
+                      onPress={() => handlePressTask(item.id)}
                       title={item.title}
                       date={new Date(item.date).toLocaleDateString()}
                       time={item.time}
