@@ -78,7 +78,7 @@ const HomeScreen = () => {
                             onPress={() => HandlePress(item.id)}
                             title={item.title}
                             date={new Date(item.date).toLocaleDateString()}
-                            time={item.time}
+                            time={new Date(item.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                             isChecked={item.isChecked}  // You can replace with actual state for checkbox
                             toggleCheckbox={() => toggleCheckbox(item.id)}
                         />

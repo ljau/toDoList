@@ -9,7 +9,7 @@ import { colors } from "../../library/colors";
 import { FlexContainer } from "../HomeScreen/styled";
 import CalendarPicker from "../../components/CalendarPicker";
 import ButtonUpdateTask from "../../components/ButtonUpdateTask";
-import { getTasks, saveTask } from "../../library/storage";  // make sure saveTask is available
+import { getTasks, saveData, saveTask } from "../../library/storage";  // make sure saveTask is available
 
 const EditTaskScreen = () => {
   const router = useRouter();
@@ -32,7 +32,6 @@ useEffect(() => {
         setTaskDescription(task.description);
         setSelectedDate(new Date(task.date)); // Set the selected date correctly
         setSelectedTime(new Date(task.time)); // Ensure selectedTime is properly set as a Date
-        console.log('task: ', task);
       } else {
         Alert.alert("Error", "Task not found.");
         router.push("/");
@@ -49,15 +48,48 @@ useEffect(() => {
 }, [taskId]);
 
 
-  // Handle saving the updated task
-  const handleSaveTask = async () => {
+const handleSaveTask = async () => {
+  try {
+    const tasks = await getTasks();
+    const taskIndex = tasks.findIndex((t) => t.id === parseInt(taskId));
 
-  };
+    if (taskIndex === -1) {
+      Alert.alert("Error", "Task not found.");
+      return;
+    }
 
-  // Handle deleting the task
-  const handleDeleteTask = async () => {
+    // Update the task
+    tasks[taskIndex] = {
+      ...tasks[taskIndex],
+      title: taskName,
+      description: taskDescription,
+      date: selectedDate.toISOString(),
+      time: selectedTime.toISOString(),
+    };
 
-  };
+    await saveData("tasks", tasks);
+    Alert.alert("Success", "Task updated successfully!");
+    router.push("/");
+  } catch (error) {
+    console.error("Error updating task:", error);
+    Alert.alert("Error", "Failed to update task.");
+  }
+};
+
+const handleDeleteTask = async () => {
+  try {
+    const tasks = await getTasks();
+    const filteredTasks = tasks.filter((t) => t.id !== parseInt(taskId));
+
+    await saveData("tasks", filteredTasks);
+    Alert.alert("Success", "Task deleted successfully!");
+    router.push("/");
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    Alert.alert("Error", "Failed to delete task.");
+  }
+};
+
 
   return (
     <Layout>

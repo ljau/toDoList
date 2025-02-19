@@ -65,7 +65,7 @@ const TasksList = () => {
                       onPress={() => handlePressTask(item.id)}
                       title={item.title}
                       date={new Date(item.date).toLocaleDateString()}
-                      time={item.time}
+                      time={new Date(item.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       isChecked={item.isChecked}
                       toggleCheckbox={() => toggleCheckbox(item.id-1)}
                       />
