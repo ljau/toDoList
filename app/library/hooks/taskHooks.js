@@ -16,10 +16,7 @@ export const useTask = (
   const handleSaveTask = async () => {
     // Check if task fields are empty
     if (!taskname.trim() || !taskDescription.trim() || !selectedCategory) {
-      Alert.alert(
-        "Error",
-        "Please fill in all fields (Title, Description, and Category)."
-      );
+      Alert.alert("Error", "Please fill in all fields.");
       return; // Prevent saving the task
     }
 
@@ -34,10 +31,7 @@ export const useTask = (
         title: taskname,
         description: taskDescription,
         date: selectedDate.toISOString(),
-        time: selectedTime.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
+        time: selectedTime.toISOString(),
         categoryId: selectedCategory, // Ensure the task is linked to a category
       };
 

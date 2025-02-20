@@ -81,6 +81,7 @@ const getTodayTasks = async () => {
 
 // Export the functions for use in other parts of the app
 export {
+  saveData,
   saveCategory,
   getCategories,
   saveTask,
