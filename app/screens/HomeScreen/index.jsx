@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body, TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, Label, Container, CheckIcon } from './styled';
 import { TaskElementList } from '../../library/constants';
 import { colors } from '../../library/colors';
@@ -9,13 +9,15 @@ import HeaderButton from '../../components/HeaderButton';
 import { Ionicons } from '@expo/vector-icons';
 import MenuModal from '../../components/MenuModal';
 import { FlatList } from 'react-native';
+import { getTodayTasks } from '../../library/storage';
 
 const HomeScreen = () => {
     const [isChecked, setIsChecked] = useState(false);
     const toggleCheckbox = () => setIsChecked((prev) => !prev);
     const router = useRouter();
     const [modalVisible, setModalVisible] = useState(false);
-    
+    const [todayTasks, setTodayTasks] = useState([]);
+
     const ButtonAddNewTask = ({ onPress, bgColor, title }) => (
         <ButtonContainer onPress={onPress} bgColor={bgColor}>
             <ButtonText>{title}</ButtonText>
@@ -25,6 +27,19 @@ const HomeScreen = () => {
     const HandlePress = () => (
         router.push('/screens/EditTaskScreen')
     )
+
+    useEffect(() => {
+        const fetchTodayTasks = async () => {
+          const tasks = await getTodayTasks(); // Fetch only today's tasks
+          setTodayTasks(tasks);
+          
+          
+        };
+    
+        fetchTodayTasks();
+      }, []);
+
+    
     return (
         <Layout>
             <>
@@ -36,25 +51,18 @@ const HomeScreen = () => {
                             <Ionicons name="menu" size={35} color="black" />
                         </HeaderButton>
                     </FlexContainer>
-                    <FlexContainer height={'50%'} width={'90%'} row justify={'space-evenly'}>
-                        <FlexContainer width={'30%'}>
-                            <Text>All Tasks</Text>
-                            <LightText>{TaskElementList.length + ' Tasks'}</LightText>
+                    <FlexContainer height={'60%'} width={'90%'} row justify={'space-between'}>
+                        <FlexContainer width={'40%'}>
+                            <Text>Today's Tasks</Text>
+                            <LightText>{todayTasks.length + ' Tasks'}</LightText>
                         </FlexContainer>
-                        {/* <FlexContainer width={'30%'}>
+                        <FlexContainer width={'40%'}>
                             <ButtonAddNewTask
                                 onPress={() => router.push('/screens/NewTaskScreen')}
                                 title='New Task'
                                 bgColor={colors.white}
-                            />
+                                />
                         </FlexContainer>
-                        <FlexContainer width={'40%'}>
-                            <ButtonAddNewTask
-                                onPress={() => router.push('/screens/CreateCategoryScreen')}
-                                title='New Category'
-                                bgColor={colors.white}
-                            />
-                        </FlexContainer> */}
                     </FlexContainer>
                 </Header>
                 <MenuModal 
@@ -63,16 +71,16 @@ const HomeScreen = () => {
                 />
                 <Body>
                     <FlatList
-                        data={TaskElementList}
-                        keyExtractor={(item, index) => index.toString()}  // Unique key for each element
-                        renderItem={({ item, index }) => (
+                        data={todayTasks}
+                        keyExtractor={(item, index) => item.id.toString()} // Unique key for each element
+                        renderItem={({ item }) => (
                         <ButtonTaskElement
-                            onPress={() => HandlePress()}
-                            key={index}
+                            onPress={() => HandlePress(item.id)}
                             title={item.title}
-                            date={item.date}
+                            date={new Date(item.date).toLocaleDateString()}
+                            time={item.time}
                             isChecked={item.isChecked}  // You can replace with actual state for checkbox
-                            toggleCheckbox={() => toggleCheckbox}
+                            toggleCheckbox={() => toggleCheckbox(item.id)}
                         />
                         )}
                         showsVerticalScrollIndicator={false}

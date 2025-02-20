@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { FlexContainer } from '../../screens/HomeScreen/styled';
 import { TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, CheckIcon } from './styled';
 
-const ButtonTaskElement = ({onPress, title, date, isChecked, toggleCheckbox, id }) => (
+const ButtonTaskElement = ({onPress, title, date, time, isChecked, toggleCheckbox, id }) => (
     <TaskElement onPress={onPress} >
         <FlexContainer width={'20%'}>
         <CheckboxWrapper>
@@ -16,7 +16,10 @@ const ButtonTaskElement = ({onPress, title, date, isChecked, toggleCheckbox, id 
         </FlexContainer>
         <FlexContainer width={'70%'} align={'flex-start'}>
             <TaskListText>{title}</TaskListText>
-            <TaskDateText>{date}</TaskDateText>
+            <FlexContainer row width={'55%'} height={'auto'} justify={'space-between'} align={'flex-start'}>
+                <TaskDateText>{date}</TaskDateText>
+                <TaskDateText>{time}</TaskDateText>
+            </FlexContainer>
         </FlexContainer>
     </TaskElement>
 )
