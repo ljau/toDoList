@@ -70,3 +70,5 @@ export const PickerContainer = styled.View`
   border-radius: 8px;
   elevation: 5;
 `;
+
+export default {};

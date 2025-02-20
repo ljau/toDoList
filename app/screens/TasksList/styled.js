@@ -13,10 +13,10 @@ export const AddTaskButton = styled.TouchableOpacity`
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 `;
 
-///////////////
-
 export const ListContainer = styled.View`
   flex: 1;
   padding: 20px;
   width: 100%;
 `;
+
+export default {};

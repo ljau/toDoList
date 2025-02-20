@@ -8,3 +8,5 @@ export const MainView = styled.View`
   align-items: center;
   display: flex;
 `;
+
+export default {};

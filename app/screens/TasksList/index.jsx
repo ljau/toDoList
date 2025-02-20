@@ -19,14 +19,6 @@ const TasksList = () => {
     const router = useRouter();
     const { id, name, description } = useLocalSearchParams();
 
-    const toggleCheckbox = (index) => {
-        setTaskData(prevTasks =>
-        prevTasks.map((task, i) =>
-          i === index ? { ...task, isChecked: !task.isChecked } : task
-        )
-      );
-    };
-
     const handlePressTask = (taskId) => {
       router.push(`/screens/EditTaskScreen?taskId=${taskId}`);
     }
@@ -66,8 +58,6 @@ const TasksList = () => {
                       title={item.title}
                       date={new Date(item.date).toLocaleDateString()}
                       time={new Date(item.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                      isChecked={item.isChecked}
-                      toggleCheckbox={() => toggleCheckbox(item.id-1)}
                       />
                     )}
                     showsVerticalScrollIndicator={false}

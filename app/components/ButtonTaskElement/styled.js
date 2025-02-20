@@ -2,14 +2,14 @@ import styled from "styled-components/native";
 import { colors } from "../../library/colors";
 
 export const TaskListText = styled.Text`
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   font-weight: 400;
-  color: ${colors.gray};
+  color: ${colors.darkGray};
 `;
 
 export const TaskDateText = styled.Text`
-  font-size: 12px;
+  font-size: 16px;
   text-align: center;
   color: ${colors.gray};
 `;
@@ -19,22 +19,18 @@ export const TaskElement = styled.TouchableOpacity`
   height: 80px;
   background-color: ${colors.lightGray};
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding-left: 10px;
   border-radius: 10px;
   flex-direction: row;
   margin: 10px;
+  border: 3px solid ${colors.lightPurple};
 `;
 
 export const Label = styled.Text`
   font-size: 18px;
   margin-left: 10px;
-`;
-
-export const CheckboxWrapper = styled.View`
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const Box = styled.View`
@@ -56,3 +52,5 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export default {};

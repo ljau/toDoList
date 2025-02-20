@@ -79,3 +79,5 @@ export const CategoryList = [
     description: "Workouts, sports, and health-related activities.",
   },
 ];
+
+export default {};

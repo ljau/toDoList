@@ -14,3 +14,5 @@ export const ButtonUpdateText = styled.Text`
   text-align: center;
   color: ${colors.white};
 `;
+
+export default {};

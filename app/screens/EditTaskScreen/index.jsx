@@ -34,7 +34,7 @@ useEffect(() => {
         setSelectedTime(new Date(task.time)); // Ensure selectedTime is properly set as a Date
       } else {
         Alert.alert("Error", "Task not found.");
-        router.push("/");
+        router.back();
       }
     } catch (error) {
       console.error("Error loading task:", error);
@@ -69,7 +69,7 @@ const handleSaveTask = async () => {
 
     await saveData("tasks", tasks);
     Alert.alert("Success", "Task updated successfully!");
-    router.push("/");
+    router.back();
   } catch (error) {
     console.error("Error updating task:", error);
     Alert.alert("Error", "Failed to update task.");
@@ -83,7 +83,7 @@ const handleDeleteTask = async () => {
 
     await saveData("tasks", filteredTasks);
     Alert.alert("Success", "Task deleted successfully!");
-    router.push("/");
+    router.back();
   } catch (error) {
     console.error("Error deleting task:", error);
     Alert.alert("Error", "Failed to delete task.");

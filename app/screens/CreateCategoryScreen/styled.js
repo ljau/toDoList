@@ -5,3 +5,5 @@ import { colors } from "../../library/colors";
 export const CreateCategoryBody = styled(MainBody)`
   background-color: ${colors.lightGray};
 `;
+
+export default {};

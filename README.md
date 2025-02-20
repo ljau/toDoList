@@ -5,8 +5,9 @@ This app allows users to create, view, and delete tasks.
 
 ## Features
 
+- Add categories to organize your tasks.
 - Add tasks to your to-do list.
-- Mark tasks as completed.
+- Edit and update tasks.
 - Delete tasks.
 - Simple and intuitive UI.
 
@@ -43,10 +44,13 @@ Alternatively, use an emulator/simulator for testing.
 
 ## Technologies Used
 
-React Native: Framework for building native mobile apps.
-Expo: Platform for easy React Native development.
-Expo Navigation: Provides stack navigation.
-Styled components: CSS-in-JS library for styling React components dynamically.
+#### Styled components: CSS-in-JS library for styling React components dynamically.
+
+#### React Native: Framework for building native mobile apps.
+
+#### Expo: Platform for easy React Native development.
+
+#### Expo Navigation: Provides stack navigation.
 
 ## How to Use
 
@@ -54,7 +58,6 @@ Styled components: CSS-in-JS library for styling React components dynamically.
 2. On the home screen:
    - Add tasks using the "New Task" button.
    - Touch a task to see details and edit.
-   - Tap on a task checkbox to mark it as completed.
 3. Tasks will remain visible until manually deleted.
 
 ## Known Issues

@@ -29,3 +29,5 @@ export const CategoryText = styled.Text`
   color: ${colors.black};
   font-weight: 300;
 `;
+
+export default {};
