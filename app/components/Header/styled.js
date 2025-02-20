@@ -15,3 +15,5 @@ export const HeaderContainer = styled.View`
 export const HeaderTitle = styled(Title)`
   font-size: 20px;
 `;
+
+export default {};

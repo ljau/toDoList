@@ -9,3 +9,5 @@ export const HeaderButtonContainer = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
+
+export default {};

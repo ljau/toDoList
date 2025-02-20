@@ -45,3 +45,5 @@ export const ModalWrapper = styled.View`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 `;
+
+export default {};

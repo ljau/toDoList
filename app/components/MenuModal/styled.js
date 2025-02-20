@@ -55,3 +55,5 @@ export const ModalButton = styled.TouchableOpacity`
   align-items: center;
   opacity: 0.8;
 `;
+
+export default {};

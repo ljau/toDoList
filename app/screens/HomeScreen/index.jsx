@@ -1,5 +1,5 @@
 import React, { useEffect, useState }  from 'react'
-import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body, TaskElement, TaskListText, TaskDateText, CheckboxWrapper, Box, Label, Container, CheckIcon } from './styled';
+import { Header, Title, FlexContainer, ButtonContainer, ButtonText, Text, LightText, Body} from './styled';
 import { TaskElementList } from '../../library/constants';
 import { colors } from '../../library/colors';
 import ButtonTaskElement from '../../components/ButtonTaskElement';
@@ -12,8 +12,6 @@ import { FlatList } from 'react-native';
 import { getTodayTasks } from '../../library/storage';
 
 const HomeScreen = () => {
-    const [isChecked, setIsChecked] = useState(false);
-    const toggleCheckbox = () => setIsChecked((prev) => !prev);
     const router = useRouter();
     const [modalVisible, setModalVisible] = useState(false);
     const [todayTasks, setTodayTasks] = useState([]);
@@ -79,8 +77,6 @@ const HomeScreen = () => {
                             title={item.title}
                             date={new Date(item.date).toLocaleDateString()}
                             time={new Date(item.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                            isChecked={item.isChecked}  // You can replace with actual state for checkbox
-                            toggleCheckbox={() => toggleCheckbox(item.id)}
                         />
                         )}
                         showsVerticalScrollIndicator={false}

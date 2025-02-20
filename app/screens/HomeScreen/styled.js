@@ -87,11 +87,6 @@ export const Label = styled.Text`
   margin-left: 10px;
 `;
 
-export const CheckboxWrapper = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
 export const Box = styled.View`
   width: 24px;
   height: 24px;
@@ -111,3 +106,5 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export default {};
